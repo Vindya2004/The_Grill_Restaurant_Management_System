@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assest/lib/normalize.css">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+
+
+  <style>
+    * {
+      font-family: "Afacad Flux", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings: "slnt" 0;
+
+    }
+    /*body{*/
+    /*  overflow: hidden;*/
+    /*}*/
+
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      width: 100%;
+      background-color: lightgray;
+      position: sticky;
+      margin-top: -8px;
+    }
+    .navbar .nav-link:hover {
+      color: blue;
+    }
+    #Navbar .navbar-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      font-size: 22px;
+    }
+    .navbar{
+      position: sticky;
+    }
+    section{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    #itemDetails{
+      display: none;
+    }
+    #orderDetails{
+      display: none;
+    }
+    #homePage{
+      display: block;
+    }
+    #customerPage{
+      display: none;
+    }
+    #loginPage{
+      display: none;
+    }
+    /*#Frame{*/
+    /*  width: 80%;*/
+    /*  height: 700px;*/
+    /*  background-color: lightgray;*/
+    /*  box-shadow: 0 0 10px rgba(0,0,0,0.8);*/
+    /*}*/
+    /*#Cus{*/
+    /*  display: flex;*/
+    /*  justify-content: center;*/
+    /*  align-items: center;*/
+    /*  font-size: 35px;*/
+    /*}*/
+    .card{
+      width:800px;
+      margin-left: 150px;
+      background-color: #a4b0be;
+    }
+
+    #card-order{
+      width:400px;
+      margin-left: 100px;
+      background-color: #a4b0be;
+    }
+    .box{
+      width: 1000px;
+      height: 400px;
+      background-color: rgba(255, 255, 255, 0.5); /* white background, 50% transparent */
+      padding: 20px;
+      border-radius: 8px;
+      position: absolute;
+      left: 13%;
+      top: 25%;
+    }
+    /*#newCustomerBTN{*/
+    /*  display: flex;*/
+    /*  justify-content: end;*/
+    /*  align-items: end;*/
+    /*  margin-right: 100px;*/
+    /*  margin-top: -215px;*/
+    /*}*/
+    /*#BTNGroup{*/
+    /*  display: flex;*/
+    /*  justify-content: end;*/
+    /*  align-items: center;*/
+    /*  margin-right: 100px;*/
+    /*}*/
+    /*.table{*/
+    /*  margin-bottom: 75px;*/
+    /*}*/
+    /*.TableDiv{*/
+    /*  display: flex;*/
+    /*  justify-content: center;*/
+    /*  align-items: center;*/
+    /*  margin-top: 50px;*/
+    /*}*/
+    /*#BTN{*/
+    /*  margin-left: 100px;*/
+    /*  margin-bottom: 5px;*/
+    /*}*/
+    /*.card-header {*/
+    /*  background-color: darkkhaki;*/
+    /*  color: white;*/
+    /*  font-size: 20px;*/
+    /*  font-weight: bolder;*/
+    /*  border: 1px solid black;*/
+    /*}*/
+    /*.card-body{*/
+    /*  background-color: #f8f9fa;*/
+    /*  border: 1px solid black;*/
+    /*}*/
+    /*.total-box {*/
+    /*  background-color: #f8f9fa;*/
+    /*  padding: 20px;*/
+    /*  border: 1px solid black;*/
+    /*}*/
+    /*.total-box h5, .total-box p {*/
+    /*  margin: 0;*/
+    /*}*/
+    /*.table-striped{*/
+    /*  border: 1px solid grey;*/
+    /*}*/
+
+
+    .bg-image{
+      background-image: url("assest/image/2022-choose-pos-system.webp");
+      background-size: cover;        /* Scales image to cover the whole area */
+      background-position: center;   /* Centers the image */
+      background-repeat: no-repeat;  /* Prevents tiling */
+      height: 100vh;                 /* Full viewport height */
+      margin: 0;
+    }
+
+    /*#homePage{*/
+    /*  display: block;*/
+    /*}*/
+
+    #homePage div p{
+      font-size: 64px;
+      font-weight: bold;
+      opacity: 2;
+      position: absolute;
+      left: 38%;
+      top: 30%;
+    }
+
+    #homePage button{
+      position: relative;
+      top: 60%;
+      left: 39%;
+      width: 100px;
+    }
+    #login-box{
+      width: 500px;
+      left: 35%;
+
+    }
+    #loginPage div p{
+      font-size: 24px;
+      position: relative;
+      left: 10%;
+      top: 10%;
+    }
+    #signUpPage{
+      display: none;
+    }
+    #signUpPage div p{
+      font-size: 24px;
+      position: relative;
+      left: 35%;
+      top: 10%;
+    }
+
+    .txtname{
+      width: 210px;
+    }
+
+    .position{
+      position: relative;
+      top: 10%;
+      left: 15%;
+    }
+
+    .position-password{
+      position: relative;
+      top: 15%;
+      left: 15%;
+    }
+
+    .lname{
+      position: relative;
+      left: -5%;
+    }
+
+    .pw-text{
+      font-weight: bold;
+      font-family: "Arial Black";
+    }
+
+    .btn-btn-btn{
+      position: relative;
+      top: 30%;
+      left: 40%;
+      width: 150px;
+    }
+
+    /*#sign-box{*/
+    /*  width: 500px;*/
+    /*  left: 25%;*/
+    /*  top: 20%;*/
+    /*}*/
+    /*#signUpPage div p{*/
+    /*  font-size: 24px;*/
+    /*  position: relative;*/
+    /*  left: 10%;*/
+    /*  top: 10%;*/
+    /*}*/
+    /*#signUpPage h5{*/
+    /*  font-size: 24px;*/
+    /*  position: relative;*/
+    /*  left: 35%;*/
+    /*  top: 10%;*/
+    /*}*/
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="assest/image/logo.jpg" width="50px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#" id="home_nav">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="customer_nav">Customer</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="item_nav">Store</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="order_nav">Order</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="login_nav">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="signup_nav">SignUp</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="homePage" class="bg-image">
+  <div class="box">
+    <p>The Grill</p>
+    <button type="button" class="btn btn-primary" id="home_login">Login</button>
+    <button type="button" class="btn btn-primary" id="home_signUp">SignUp</button>
+  </div>
+</section>
+
+<section id="loginPage" class="bg-image">
+  <div class="box">
+    <p>Don't have an Account? <a href="#" id="login_signup">SignUp</a> </p>
+    <div class="row g-3 position">
+      <div class="col">
+        <input type="text" class="form-control txtname login-user-name" id="userName" placeholder="User name(First Name)" aria-label="User name">
+      </div>
+    </div>
+    <div class="row g-3 align-items-center position-password">
+      <div class="col-auto">
+        <input type="password" id="inputLoginPassword6" class="form-control edit-login-password" aria-describedby="passwordHelpInline" placeholder="Password">
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-btn-btn" id="login_login">Login</button>
+  </div>
+</section>
+
+
+<section id="signUpPage" class="bg-image">
+  <div class="box">
+    <p>Have an Account? <a href="#" id="signup_login">Login</a> </p>
+    <div class="row g-3 position">
+      <div class="col">
+        <input type="text" class="form-control txtname" id="fName" placeholder="First name" aria-label="First name">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control txtname lname" id="lName" placeholder="Last name" aria-label="Last name">
+      </div>
+    </div>
+    <div class="row g-3 align-items-center position-password">
+
+      <div class="col-auto">
+        <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="Password">
+      </div>
+      <div class="col-auto">
+                    <span id="passwordHelpInline" class="form-text pw-text">
+                      Must be 8-20 characters long.
+                    </span>
+      </div>
+      <div class="col-auto">
+        <input type="password" id="confirmpassword" class="form-control" aria-describedby="passwordHelpInline" placeholder="Confirm Password">
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-btn-btn" id="signUp_signUp">SignUp</button>
+  </div>
+</section>
+<!--<section id="homePage" class="bg-image">-->
+<!--  <div class="card" style="width: 18rem;">-->
+<!--    <img src="assest/image/18-12_mensenumfrage.jpg" class="card-img-top" alt="Customer">-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">Customer Management</h5>-->
+<!--      <p class="card-text">Customer Management is organizing customer data to improve relationships and boost satisfaction.</p>-->
+<!--      <a href="#" class="btn btn-primary" id="home_customer">Customer Management</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="card" style="width: 18rem;">-->
+<!--    <img src="assest/image/Image-3.webp" class="card-img-top" alt="Store">-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">Store Management</h5>-->
+<!--      <p class="card-text">Store Management handles inventory, sales, and daily operations to boost efficiency and profits.</p>-->
+<!--      <a href="#" class="btn btn-primary" id="home_item">Store Management</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="card" style="width: 18rem;">-->
+<!--    <img src="assest/image/order-management.webp" class="card-img-top" alt="Order">-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">Order Management</h5>-->
+<!--      <p class="card-text">Order Management tracks, processes, and fulfills customer orders to ensure timely and accurate delivery.</p>-->
+<!--      <a href="#" class="btn btn-primary" id="home_order">Order Management</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<section id="customerPage">
+  <main>
+    <div class="row">
+      <div class="w-auto p-3">
+        <div class="col-lg-9">
+          <div class="card p-3 mb-4">
+            <h4 class="card-title">Add / Edit Customer</h4>
+            <form>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="id" class="form-label">Customer ID</label>
+                  <input type="text" class="form-control" id="id" placeholder="Enter Customer ID">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="name" class="form-label">Customer Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter Customer Name">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="address" placeholder="Enter Customer Address">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="contact" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="contact" placeholder="Enter Phone Number">
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="btn-group-vertical w-100">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search by ID or Name" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+              <br>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-success" id="customer_save">Save</button>
+                <button type="button" class="btn btn-warning" id="customer_update">Update</button>
+                <button type="button" class="btn btn-danger" id="customer_delete">Delete</button>
+              </div>
+            </form>
+          </div>
+          <div class="card p-3">
+            <h4 class="card-title">Customers</h4>
+            <table class="table table-bordered table-striped">
+              <thead class="table-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact No</th>
+              </tr>
+              </thead>
+              <tbody id="customer_tbody">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<section id="itemDetails">
+  <main>
+
+    <div class="row">
+      <div class="w-auto p-3">
+        <div class="col-lg-9">
+          <div class="card p-3 mb-4">
+            <h4 class="card-title">Add / Edit Item</h4>
+            <form>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="code" class="form-label">Item ID</label>
+                  <input type="text" class="form-control" id="code" placeholder="Enter Item ID">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="iName" class="form-label">Item Name</label>
+                  <input type="text" class="form-control" id="iName" placeholder="Enter Item Name">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="qty" class="form-label">Quantity</label>
+                  <input type="text" class="form-control" id="i-qty" placeholder="Quantity">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="tel" class="form-control" id="price" placeholder="Enter Price">
+                </div>
+
+              </div>
+              <div class="col-lg-3">
+                <div class="btn-group-vertical w-100">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search by ID" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+              <br>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-success" id="item-save">Save</button>
+                <button type="button" class="btn btn-warning" id="item_update">Update</button>
+                <button type="button" class="btn btn-danger" id="item_delete">Delete</button>
+              </div>
+            </form>
+          </div>
+          <div class="card p-3">
+            <h4 class="card-title">Item</h4>
+            <table class="table table-bordered table-striped">
+              <thead class="table-dark">
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+              </tr>
+              </thead>
+              <tbody id="item_tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<section id="orderDetails">
+  <main>
+    <div class="container mt-5">
+      <div class="row">
+        <!-- Invoice Details -->
+        <div class="col-md-4">
+          <div class="card" id="card-order">
+            <div class="card-header">Invoice Details</div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="oId" class="form-label">Order ID:</label>
+                <input type="text" class="form-control" id="oId">
+              </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Date:</label>
+                <input type="date" class="form-control" id="date">
+              </div>
+              <div class="mb-3">
+                <label for="cId" class="form-label">Customer ID:</label>
+                <select class="form-select" id="cId">
+                  <option value="C003" selected>C003</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="o-name">
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address:</label>
+                <input type="text" class="form-control" id="o-address">
+              </div>
+              <div class="mb-3">
+                <label for="salary" class="form-label">Salary:</label>
+                <input type="text" class="form-control" id="salary">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item Select -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">Item Select</div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="iCode" class="form-label">Item ID:</label>
+                <select class="form-select" id="iCode">
+                  <option value="P002" selected>P002</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="itemName" class="form-label">Item Name:</label>
+                <input type="text" class="form-control" id="itemName">
+              </div>
+              <div class="mb-3">
+                <label for="oPrice" class="form-label">Price:</label>
+                <input type="text" class="form-control" id="oPrice">
+              </div>
+              <div class="mb-3">
+                <label for="qty" class="form-label">Qty On Hand:</label>
+                <input type="text" class="form-control" id="qty">
+              </div>
+              <div class="mb-3">
+                <label for="oQty" class="form-label">Order Quantity:</label>
+                <input type="text" class="form-control" id="oQty">
+              </div>
+              <button class="btn btn-success" id="orderDetails_save">Add Item</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total & Payment -->
+        <div class="col-md-4">
+          <div class="total-box border rounded p-3">
+            <h5>Total: <strong></strong></h5>
+            <p class="text-danger">SubTotal: </p>
+            <div class="mb-3">
+              <label for="cash" class="form-label">Cash:</label>
+              <input type="text" class="form-control" id="cash">
+            </div>
+            <div class="mb-3">
+              <label for="discount" class="form-label">Discount:</label>
+              <input type="text" class="form-control" id="discount">
+            </div>
+            <div class="mb-3">
+              <label for="balance" class="form-label">Balance:</label>
+              <input type="text" class="form-control" id="balance">
+            </div>
+            <button class="btn btn-success w-100">Purchase</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="mt-5">
+        <table class="table table-striped">
+          <thead class="table-success">
+          <tr>
+            <th scope="col">Item ID</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+          </tr>
+          </thead>
+          <tbody id="order_tbody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</section>
+
+<script src="assest/lib/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/OrderDetailsController.js"></script>
+<script type="module" src="controller/LoginController.js"></script>
+<script type="module" src="controller/SignUpController.js"></script>
+
+<script>
+  $("#customer_nav").on('click', function () {
+    $("#customerPage").css("display", "block");
+    $("#homePage").css("display", "none");
+    $("#itemDetails").css("display", "none");
+    $("#orderDetails").css("display", "none");
+    $("#signUpPage").css("display", "none");
+    $("#loginPage").css("display", "none");
+  })
+
+  $("#item_nav").on('click', function () {
+    $("#customerPage").css("display", "none");
+    $("#homePage").css("display", "none");
+    $("#itemDetails").css("display", "block");
+    $("#orderDetails").css("display", "none");
+    $("#signUpPage").css("display", "none");
+    $("#loginPage").css("display", "none");
+  })
+
+  $("#order_nav").on('click', function () {
+    $("#customerPage").css("display", "none");
+    $("#homePage").css("display", "none");
+    $("#itemDetails").css("display", "none");
+    $("#orderDetails").css("display", "block");
+    $("#signUpPage").css("display", "none");
+    $("#loginPage").css("display", "none");
+  })
+
+
+  $("#home_nav").on('click', function () {
+    $("#customerPage").css("display", "none");
+    $("#homePage").css("display", "block");
+    $("#itemDetails").css("display", "none");
+    $("#orderDetails").css("display", "none");
+    $("#signUpPage").css("display", "none");
+    $("#loginPage").css("display", "none");
+  })
+  $("#login_nav").on('click', function () {
+    $("#customerPage").css("display", "nav");
+    $("#homePage").css("display", "none");
+    $("#itemDetails").css("display", "none");
+    $("#orderDetails").css("display", "none");
+    $("#signUpPage").css("display", "none");
+    $("#loginPage").css("display", "block");
+  })
+
+  $("#signup_nav").on('click', function () {
+    $("#customerPage").css("display", "none");
+    $("#homePage").css("display", "none");
+    $("#itemDetails").css("display", "none");
+    $("#orderDetails").css("display", "none");
+    $("#signUpPage").css("display", "block");
+    $("#loginPage").css("display", "none");
+  })
+
+  $("#login_signup").on('click',function () {
+    $("#loginPage").css("display", "none");
+    $("#signUpPage").css("display", "block");
+  })
+  $('#home_login').on('click',function () {
+    $("#loginPage").css("display", "block");
+    $("#homePage").css("display", "none");
+  })
+  $('#login_login').on('click',function () {
+    $("#loginPage").css("display", "none");
+    $("#customerPage").css("display", "block");
+  })
+  $('#home_signUp').on('click',function () {
+    $("#homePage").css("display", "none");
+    $("#signUpPage").css("display", "block");
+  })
+  $("#signup_login").on('click',function () {
+    $("#loginPage").css("display", "block");
+    $("#signUpPage").css("display", "none");
+  })
+  //
+  // $("#home_customer").on('click', function () {
+  //   $("#homePage").hide();
+  //   $("#customerPage").show();
+  //   $("#itemDetails").hide();
+  //   $("#orderDetails").hide();
+  // });
+  //
+  // $("#home_item").on('click', function () {
+  //   $("#homePage").hide();
+  //   $("#customerPage").hide();
+  //   $("#itemDetails").show();
+  //   $("#orderDetails").hide();
+  // });
+  //
+  // $("#home_order").on('click', function () {
+  //   $("#homePage").hide();
+  //   $("#customerPage").hide();
+  //   $("#itemDetails").hide();
+  //   $("#orderDetails").show();
+  // });
+</script>
+</body>
+</html>
