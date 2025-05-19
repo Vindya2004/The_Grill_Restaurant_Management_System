@@ -1,9 +1,11 @@
 export default class OrderDetailsModel {
-    constructor(oId, cId, iCode, oQty, oPrice) {
+    constructor(oId, cId, iCode, date, oQty,total) {
         this.oId = oId;
         this.cId = cId;
         this.iCode = iCode;
+        this.date = date;
         this.oQty = oQty;
-        this.oPrice = oPrice;
+        this.total = total;
     }
+
 }

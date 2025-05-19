@@ -20,9 +20,9 @@
       font-variation-settings: "slnt" 0;
 
     }
-    /*body{*/
-    /*  overflow: hidden;*/
-    /*}*/
+    body{
+      overflow-x: hidden;
+    }
 
     .container-fluid {
       display: flex;
@@ -30,7 +30,7 @@
       align-items: center;
       height: 60px;
       width: 100%;
-      background-color: lightgray;
+      background-color: white;
       position: sticky;
       margin-top: -8px;
     }
@@ -69,18 +69,6 @@
     #loginPage{
       display: none;
     }
-    /*#Frame{*/
-    /*  width: 80%;*/
-    /*  height: 700px;*/
-    /*  background-color: lightgray;*/
-    /*  box-shadow: 0 0 10px rgba(0,0,0,0.8);*/
-    /*}*/
-    /*#Cus{*/
-    /*  display: flex;*/
-    /*  justify-content: center;*/
-    /*  align-items: center;*/
-    /*  font-size: 35px;*/
-    /*}*/
     .card{
       width:800px;
       margin-left: 150px;
@@ -88,9 +76,17 @@
     }
 
     #card-order{
-      width:400px;
+      width:350px;
       margin-left: 100px;
       background-color: #a4b0be;
+    }
+    #itemCard{
+      width:350px;
+      margin-left: 80px;
+    }
+    #totalBox{
+      background-color: #a4b0be;
+      margin-left: 80px;
     }
     .box{
       width: 1000px;
@@ -102,56 +98,6 @@
       left: 13%;
       top: 25%;
     }
-    /*#newCustomerBTN{*/
-    /*  display: flex;*/
-    /*  justify-content: end;*/
-    /*  align-items: end;*/
-    /*  margin-right: 100px;*/
-    /*  margin-top: -215px;*/
-    /*}*/
-    /*#BTNGroup{*/
-    /*  display: flex;*/
-    /*  justify-content: end;*/
-    /*  align-items: center;*/
-    /*  margin-right: 100px;*/
-    /*}*/
-    /*.table{*/
-    /*  margin-bottom: 75px;*/
-    /*}*/
-    /*.TableDiv{*/
-    /*  display: flex;*/
-    /*  justify-content: center;*/
-    /*  align-items: center;*/
-    /*  margin-top: 50px;*/
-    /*}*/
-    /*#BTN{*/
-    /*  margin-left: 100px;*/
-    /*  margin-bottom: 5px;*/
-    /*}*/
-    /*.card-header {*/
-    /*  background-color: darkkhaki;*/
-    /*  color: white;*/
-    /*  font-size: 20px;*/
-    /*  font-weight: bolder;*/
-    /*  border: 1px solid black;*/
-    /*}*/
-    /*.card-body{*/
-    /*  background-color: #f8f9fa;*/
-    /*  border: 1px solid black;*/
-    /*}*/
-    /*.total-box {*/
-    /*  background-color: #f8f9fa;*/
-    /*  padding: 20px;*/
-    /*  border: 1px solid black;*/
-    /*}*/
-    /*.total-box h5, .total-box p {*/
-    /*  margin: 0;*/
-    /*}*/
-    /*.table-striped{*/
-    /*  border: 1px solid grey;*/
-    /*}*/
-
-
     .bg-image{
       background-image: url("assest/image/2022-choose-pos-system.webp");
       background-size: cover;        /* Scales image to cover the whole area */
@@ -160,11 +106,6 @@
       height: 100vh;                 /* Full viewport height */
       margin: 0;
     }
-
-    /*#homePage{*/
-    /*  display: block;*/
-    /*}*/
-
     #homePage div p{
       font-size: 64px;
       font-weight: bold;
@@ -180,15 +121,11 @@
       left: 39%;
       width: 100px;
     }
-    #login-box{
-      width: 500px;
-      left: 35%;
 
-    }
     #loginPage div p{
       font-size: 24px;
       position: relative;
-      left: 10%;
+      left: 30%;
       top: 10%;
     }
     #signUpPage{
@@ -197,60 +134,157 @@
     #signUpPage div p{
       font-size: 24px;
       position: relative;
-      left: 35%;
+      left: 40%;
       top: 10%;
     }
 
     .txtname{
+      position: relative;
       width: 210px;
     }
 
     .position{
       position: relative;
       top: 10%;
-      left: 15%;
+      left: 35%;
     }
 
     .position-password{
       position: relative;
       top: 15%;
-      left: 15%;
+      left: 35%;
     }
 
     .lname{
       position: relative;
-      left: -5%;
+      left: -50%;
+    }
+    #confirmpassword{
+      margin-left: 35%;
     }
 
-    .pw-text{
-      font-weight: bold;
-      font-family: "Arial Black";
-    }
-
-    .btn-btn-btn{
+    #login_login{
       position: relative;
       top: 30%;
       left: 40%;
       width: 150px;
     }
+    #signUp_signUp{
+      position: relative;
+      top: 30%;
+      left: 50%;
+      width: 150px;
+    }
 
-    /*#sign-box{*/
-    /*  width: 500px;*/
-    /*  left: 25%;*/
-    /*  top: 20%;*/
-    /*}*/
-    /*#signUpPage div p{*/
-    /*  font-size: 24px;*/
-    /*  position: relative;*/
-    /*  left: 10%;*/
-    /*  top: 10%;*/
-    /*}*/
-    /*#signUpPage h5{*/
-    /*  font-size: 24px;*/
-    /*  position: relative;*/
-    /*  left: 35%;*/
-    /*  top: 10%;*/
-    /*}*/
+    #btn_purchase{
+      background-color: green;
+    }
+
+    #btn_add_item{
+      background-color: green;
+    }
+
+    /* For devices with width 992px and below (tablet and smaller) */
+    @media (max-width: 992px) {
+      .box {
+        width: 90%;
+        left: 5%;
+        top: 20%;
+        height: auto;
+      }
+
+      #homePage div p {
+        font-size: 40px;
+        left: 25%;
+        top: 20%;
+      }
+
+      #homePage button {
+        top: 50%;
+        left: 35%;
+      }
+
+      #loginPage div p,
+      #signUpPage div p {
+        left: 20%;
+        font-size: 20px;
+      }
+
+      .position,
+      .position-password {
+        left: 10%;
+        top: 5%;
+      }
+
+      .txtname {
+        width: 100%;
+      }
+
+      .lname {
+        left: 0;
+      }
+
+      #confirmpassword {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      #login_login,
+      #signUp_signUp {
+        left: 30%;
+      }
+
+      .card,
+      #card-order,
+      #itemCard,
+      #totalBox {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+    /* For devices with width 576px and below (mobile) */
+    @media (max-width: 576px) {
+      .navbar-nav {
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .box {
+        top: 15%;
+      }
+
+      #homePage div p {
+        font-size: 28px;
+        left: 15%;
+        top: 15%;
+      }
+
+      #homePage button {
+        left: 30%;
+      }
+
+      #loginPage div p,
+      #signUpPage div p {
+        font-size: 18px;
+        left: 10%;
+      }
+
+      .position,
+      .position-password {
+        left: 5%;
+      }
+
+      #login_login,
+      #signUp_signUp {
+        width: 120px;
+        left: 25%;
+      }
+
+      #confirmpassword {
+        margin-left: 0;
+      }
+    }
 
   </style>
 </head>
@@ -317,11 +351,7 @@
       <div class="col-auto">
         <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="Password">
       </div>
-      <div class="col-auto">
-                    <span id="passwordHelpInline" class="form-text pw-text">
-                      Must be 8-20 characters long.
-                    </span>
-      </div>
+
       <div class="col-auto">
         <input type="password" id="confirmpassword" class="form-control" aria-describedby="passwordHelpInline" placeholder="Confirm Password">
       </div>
@@ -329,32 +359,6 @@
     <button type="button" class="btn btn-primary btn-lg btn-btn-btn" id="signUp_signUp">SignUp</button>
   </div>
 </section>
-<!--<section id="homePage" class="bg-image">-->
-<!--  <div class="card" style="width: 18rem;">-->
-<!--    <img src="assest/image/18-12_mensenumfrage.jpg" class="card-img-top" alt="Customer">-->
-<!--    <div class="card-body">-->
-<!--      <h5 class="card-title">Customer Management</h5>-->
-<!--      <p class="card-text">Customer Management is organizing customer data to improve relationships and boost satisfaction.</p>-->
-<!--      <a href="#" class="btn btn-primary" id="home_customer">Customer Management</a>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="card" style="width: 18rem;">-->
-<!--    <img src="assest/image/Image-3.webp" class="card-img-top" alt="Store">-->
-<!--    <div class="card-body">-->
-<!--      <h5 class="card-title">Store Management</h5>-->
-<!--      <p class="card-text">Store Management handles inventory, sales, and daily operations to boost efficiency and profits.</p>-->
-<!--      <a href="#" class="btn btn-primary" id="home_item">Store Management</a>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="card" style="width: 18rem;">-->
-<!--    <img src="assest/image/order-management.webp" class="card-img-top" alt="Order">-->
-<!--    <div class="card-body">-->
-<!--      <h5 class="card-title">Order Management</h5>-->
-<!--      <p class="card-text">Order Management tracks, processes, and fulfills customer orders to ensure timely and accurate delivery.</p>-->
-<!--      <a href="#" class="btn btn-primary" id="home_order">Order Management</a>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
 
 <section id="customerPage">
   <main>
@@ -439,7 +443,7 @@
                   <input type="text" class="form-control" id="iName" placeholder="Enter Item Name">
                 </div>
                 <div class="col-md-4 mb-3">
-                  <label for="qty" class="form-label">Quantity</label>
+                  <label for="i-qty" class="form-label">Quantity</label>
                   <input type="text" class="form-control" id="i-qty" placeholder="Quantity">
                 </div>
                 <div class="col-md-4 mb-3">
@@ -496,29 +500,28 @@
             <div class="card-body">
               <div class="mb-3">
                 <label for="oId" class="form-label">Order ID:</label>
-                <input type="text" class="form-control" id="oId">
+                <input type="text" class="form-control" id="oId" >
               </div>
               <div class="mb-3">
                 <label for="date" class="form-label">Date:</label>
-                <input type="date" class="form-control" id="date">
+                <input type="date" class="form-control" id="date" >
               </div>
               <div class="mb-3">
                 <label for="cId" class="form-label">Customer ID:</label>
-                <select class="form-select" id="cId">
-                  <option value="C003" selected>C003</option>
+                <select class="form-select select_item" aria-label="Default select example" id="cId">
                 </select>
               </div>
               <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="o-name">
+                <label for="cus_name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="cus_name">
               </div>
               <div class="mb-3">
-                <label for="address" class="form-label">Address:</label>
-                <input type="text" class="form-control" id="o-address">
+                <label for="cus_address" class="form-label">Address:</label>
+                <input type="text" class="form-control" id="cus_address">
               </div>
               <div class="mb-3">
-                <label for="salary" class="form-label">Salary:</label>
-                <input type="text" class="form-control" id="salary">
+                <label for="cus_contact" class="form-label">Contact:</label>
+                <input type="text" class="form-control" id="cus_contact">
               </div>
             </div>
           </div>
@@ -526,44 +529,51 @@
 
         <!-- Item Select -->
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" id="itemCard">
             <div class="card-header">Item Select</div>
             <div class="card-body">
               <div class="mb-3">
-                <label for="iCode" class="form-label">Item ID:</label>
-                <select class="form-select" id="iCode">
-                  <option value="P002" selected>P002</option>
+                <label class="form-label">Item ID:</label>
+                <select class="form-select select_item" aria-label="Default select example" id="order_item_id">
                 </select>
               </div>
               <div class="mb-3">
-                <label for="itemName" class="form-label">Item Name:</label>
-                <input type="text" class="form-control" id="itemName">
+                <label for="item_name" class="form-label">Item Name:</label>
+                <input type="text" class="form-control" id="item_name">
               </div>
               <div class="mb-3">
-                <label for="oPrice" class="form-label">Price:</label>
-                <input type="text" class="form-control" id="oPrice">
+                <label for="item_price" class="form-label">Price:</label>
+                <input type="text" class="form-control" id="item_price">
               </div>
               <div class="mb-3">
-                <label for="qty" class="form-label">Qty On Hand:</label>
-                <input type="text" class="form-control" id="qty">
+                <label for="item_qty" class="form-label">Qty On Hand:</label>
+                <input type="text" class="form-control" id="item_qty">
               </div>
               <div class="mb-3">
-                <label for="oQty" class="form-label">Order Quantity:</label>
-                <input type="text" class="form-control" id="oQty">
+                <label for="order_qty" class="form-label">Order Quantity:</label>
+                <input type="text" class="form-control" id="order_qty">
               </div>
-              <button class="btn btn-success" id="orderDetails_save">Add Item</button>
+              <button type="button" class="btn btn-primary" id="btn_add_item">Add Item</button>
             </div>
           </div>
         </div>
 
         <!-- Total & Payment -->
         <div class="col-md-4">
-          <div class="total-box border rounded p-3">
-            <h5>Total: <strong></strong></h5>
-            <p class="text-danger">SubTotal: </p>
+          <div class="total-box border rounded p-3" id="totalBox">
+            <label class="form-label">Total :</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Rs.</span>
+              <input type="text" class="form-control" id="tot">
+            </div>
+
             <div class="mb-3">
-              <label for="cash" class="form-label">Cash:</label>
-              <input type="text" class="form-control" id="cash">
+              <label class="form-label">Payment Method:</label>
+              <select class="form-select pay_method" aria-label="Default select example" id="pay_method">
+                <option selected></option>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+              </select>
             </div>
             <div class="mb-3">
               <label for="discount" class="form-label">Discount:</label>
@@ -573,7 +583,7 @@
               <label for="balance" class="form-label">Balance:</label>
               <input type="text" class="form-control" id="balance">
             </div>
-            <button class="btn btn-success w-100">Purchase</button>
+            <button type="button" class="btn btn-primary" id="btn_purchase">Purchase</button>
           </div>
         </div>
       </div>
@@ -583,10 +593,12 @@
         <table class="table table-striped">
           <thead class="table-success">
           <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Customer Id</th>
             <th scope="col">Item ID</th>
-            <th scope="col">Item Name</th>
-            <th scope="col">Price</th>
+            <th scope="col">Date</th>
             <th scope="col">Quantity</th>
+<!--            <th scope="col">Price</th>-->
             <th scope="col">Total</th>
           </tr>
           </thead>
@@ -683,27 +695,9 @@
     $("#loginPage").css("display", "block");
     $("#signUpPage").css("display", "none");
   })
-  //
-  // $("#home_customer").on('click', function () {
-  //   $("#homePage").hide();
-  //   $("#customerPage").show();
-  //   $("#itemDetails").hide();
-  //   $("#orderDetails").hide();
-  // });
-  //
-  // $("#home_item").on('click', function () {
-  //   $("#homePage").hide();
-  //   $("#customerPage").hide();
-  //   $("#itemDetails").show();
-  //   $("#orderDetails").hide();
-  // });
-  //
-  // $("#home_order").on('click', function () {
-  //   $("#homePage").hide();
-  //   $("#customerPage").hide();
-  //   $("#itemDetails").hide();
-  //   $("#orderDetails").show();
-  // });
+  $('#customer_nav').css("display","none");
+  $('#item_nav').css("display","none");
+  $('#order_nav').css("display","none")
 </script>
 </body>
 </html>

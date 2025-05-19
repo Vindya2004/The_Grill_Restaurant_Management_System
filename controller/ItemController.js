@@ -1,6 +1,14 @@
 import {item_db} from "../db/db.js";
 import ItemModel from "../model/ItemModel.js";
 
+let idx = -1;
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("code")) {
+        loadItemIds();
+    }
+});
+
 $("#item-save").on('click',function (){
     let code = $('#code').val();
     let iName = $('#iName').val();
@@ -30,6 +38,7 @@ $("#item-save").on('click',function (){
             icon: "success",
             draggable: true
         });
+        loadItemIds();
     }
 })
 
@@ -52,7 +61,6 @@ function loadTableData(){
     })
 }
 
-let idx = -1;
 
 $("#item_tbody").on('click', 'tr', function () {
     idx = $(this).index();
@@ -97,6 +105,7 @@ $("#item_update").on('click',function () {
         title: "Updated Successfully!",
         icon: "success",
     });
+    loadItemIds();
 })
 
 $("#item_delete").on('click',function () {
@@ -125,10 +134,17 @@ $("#item_delete").on('click',function () {
                 text: 'The Customer has been removed.',
                 icon: 'success'
             });
+            loadItemIds();
         }
     })
 })
 
+
+function loadItemIds(){
+    let count = item_db.length + 1;
+    let newId = "I" + count.toString().padStart(3, "0");
+    $('#code').val(newId);
+}
 function clear(){
     $('#code').val('');
     $('#iName').val('');

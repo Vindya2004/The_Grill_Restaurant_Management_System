@@ -1,47 +1,156 @@
-import { orderDetails_db } from "../db/db.js";
+import {orderDetails_db} from "../db/db.js";
+import {customer_db} from "../db/db.js";
+import {item_db} from "../db/db.js";
+
 import OrderDetailsModel from "../model/OrderDetailsModel.js";
+
 
 let idx = -1;
 
-document.getElementById("orderDetails_save").addEventListener("click", () => {
-    let oId = document.getElementById("oId").value.trim();
-    let cId = document.getElementById("cId").value.trim();
-    let iCode = document.getElementById("iCode").value.trim();
-    let oQty = document.getElementById("oQty").value.trim();
-    let oPrice = document.getElementById("oPrice").value.trim();
-
-    if (!oId || !cId || !iCode || !oQty || !oPrice) {
-        Swal.fire("Error", "Please fill in all required fields", "error");
-        return;
-    }
-
-    let orderDetails = new OrderDetailsModel(oId, cId, iCode, parseInt(oQty), parseFloat(oPrice));
-    orderDetails_db.push(orderDetails);
-    loadTableData();
-    clearInputs();
-
-    Swal.fire("Added", "Order detail added successfully", "success");
-});
-
-function loadTableData() {
-    let tbody = document.getElementById("order_tbody");
-    tbody.innerHTML = "";
-
-    orderDetails_db.forEach((item, index) => {
-        let row = `<tr>
-            <td>${item.iCode}</td>
-            <td>${document.getElementById("itemName").value || "Item Name"}</td>
-            <td>${item.oPrice.toFixed(2)}</td>
-            <td>${item.oQty}</td>
-            <td>${(item.oPrice * item.oQty).toFixed(2)}</td>
-        </tr>`;
-        tbody.innerHTML += row;
-    });
+function loadOrderIds(){
+    let count = orderDetails_db.length;
+    $('#oId').val(count+1);
 }
 
-function clearInputs() {
-    document.getElementById("iCode").value = "";
-    document.getElementById("itemName").value = "";
-    document.getElementById("oPrice").value = "";
-    document.getElementById("oQty").value = "";
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (document.getElementById("oId")) {
+        loadOrderIds();
+    }
+    if (document.getElementById("date")){
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // months are 0-indexed
+        const day = String(today.getDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+
+        $('#date').val(formattedDate);
+    }
+
+
+    const select = document.getElementById("cId");
+    select.innerHTML = '<option disabled selected>Select Customer</option>';
+
+    $('#cId').on('click',function () {
+
+        while (select.options.length > 1) {
+            select.remove(1);
+        }
+
+        customer_db.forEach(cus => {
+            const option = document.createElement("option");
+            option.value = cus.id;
+            option.textContent = cus.id; // You can show ID + name
+            select.appendChild(option);
+        });
+    })
+
+    const selectItem = document.getElementById("order_item_id");
+    selectItem.innerHTML = '<option disabled selected>Select Item</option>';
+
+    $('#order_item_id').on('click',function () {
+
+        while (selectItem.options.length > 1) {
+            selectItem.remove(1);
+        }
+
+        // Loop through the array and add options
+        item_db.forEach(item => {
+            const optionNew = document.createElement("option");
+            optionNew.value = item.code;
+            optionNew.textContent = item.code; // You can show ID + name
+            selectItem.appendChild(optionNew);
+        });
+        console.log("item data :", item_db);
+    })
+
+});
+
+document.getElementById("cId").addEventListener("change", function () {
+    const selectedId = this.value;
+    const selectedCustomer = customer_db.find(cus => cus.id === selectedId);
+    if (selectedCustomer) {
+        console.log("Selected Customer:", selectedCustomer);
+        // e.g. update form fields
+        document.getElementById("cus_name").value = selectedCustomer.name;
+        document.getElementById("cus_address").value = selectedCustomer.address;
+        document.getElementById("cus_contact").value = selectedCustomer.contact;
+    }
+});
+
+document.getElementById("order_item_id").addEventListener("change", function () {
+    const selectedId = this.value;
+    const selectedItem = item_db.find(item => item.code === selectedId);
+    if (selectedItem) {
+        console.log("Selected Item:", selectedItem);
+        // e.g. update form fields
+        document.getElementById("item_name").value = selectedItem.iName;
+        document.getElementById("item_price").value = selectedItem.price;
+        document.getElementById("item_qty").value = selectedItem.qty;
+    }
+});
+
+$('#btn_add_item').on('click', function () {
+    let itemPrice = $('#item_price').val();
+    let qtyOnHand = $('#item_qty').val();
+    let orderQty = $('#order_qty').val();
+
+    let oId = $('#oId').val();
+    let cId = $('#cId').val();
+    let code = $('#order_item_id').val();
+    let date = $('#date').val();
+
+    let total = itemPrice * orderQty;
+
+    if (qtyOnHand < orderQty){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Out Of Stock',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+
+    }else {
+        $('#tot').val(total);
+
+    }
+
+    let order_data = new OrderDetailsModel(oId,cId,code,date,orderQty,total);
+
+    orderDetails_db.push(order_data);
+    console.log("order data: ",orderDetails_db);
+
+    loadTableData();
+})
+
+$('#btn_purchase').on('click',function () {
+    let tot = $('#tot').val();
+    let discount = $('#discount').val();
+
+    $('#balance').val(tot-discount);
+})
+
+function loadTableData() {
+
+    $('#order_tbody').empty();
+
+    orderDetails_db.map((item,index)=>{
+        let oId = $('#oId').val();
+        let cId = $('#cId').val();
+        let code = $('#order_item_id').val();
+        let date = $('#date').val();
+        let qty = $('#order_qty').val();
+        let total = $('#tot').val();
+
+        let data = `<tr>
+            <td>${index+1}</td>
+            <td>${cId}</td>
+            <td>${code}</td>
+            <td>${date}</td>
+            <td>${qty}</td>
+            <td>${total}</td>
+        </tr>`
+
+        $('#order_tbody').append(data);
+    })
 }

@@ -1,6 +1,15 @@
 import {customer_db} from "../db/db.js";
 import CustomerModel from "../model/CustomerModel.js";
 
+let idx = -1
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("id")) {
+        loadCustomerIds();
+    }
+
+});
+
 $("#customer_save").on('click',function (){
     let id = $('#id').val();
     let name = $('#name').val();
@@ -14,6 +23,7 @@ $("#customer_save").on('click',function (){
             icon: 'error',
             confirmButtonText: 'Ok'
         })
+        loadCustomerIds();
     }else {
         let customer_data = new CustomerModel(id,name,address,contact);
 
@@ -30,6 +40,7 @@ $("#customer_save").on('click',function (){
             icon: "success",
             draggable: true
         });
+        loadCustomerIds();
     }
 })
 
@@ -51,7 +62,7 @@ function loadStudents() {
         $('#customer_tbody').append(data);
     })
 }
-let idx = -1
+
 $("#customer_tbody").on('click', 'tr', function(){
     idx = $(this).index();
     console.log(idx);
@@ -131,10 +142,16 @@ $("#customer_delete").on('click', function () {
                 text: 'The Customer has been removed.',
                 icon: 'success'
             });
+            loadCustomerIds();
         }
     });
 });
 
+function loadCustomerIds(){
+    let count = customer_db.length + 1;
+    let newId = "C" + count.toString().padStart(3, "0");  // උදා: C001, C002 වගේ
+    $('#id').val(newId);
+}
 
 function clear(){
     $('#id').val('');
