@@ -115,7 +115,7 @@ $("#item_delete").on('click',function () {
     }
     Swal.fire({
         title: 'Are you sure?',
-        text: "This Customer will be removed permanently.",
+        text: "This Item will be removed permanently.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!'
@@ -131,7 +131,7 @@ $("#item_delete").on('click',function () {
 
             Swal.fire({
                 title: 'Deleted!',
-                text: 'The Customer has been removed.',
+                text: 'The Item has been removed.',
                 icon: 'success'
             });
             loadItemIds();
